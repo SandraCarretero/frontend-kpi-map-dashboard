@@ -3,9 +3,8 @@ import dashboardData from './data/dashboardData.json';
 import RadarChart from './components/RadarChart';
 import Mapa from './components/Mapa';
 import AlertBox from './components/AlertBox';
-import BarChart from './components/BarChart';
-import LineChart from './components/LineChart';
-import logoSvg from './assets/logo.svg';
+import BarsChart from './components/BarsChart';
+import LinesChart from './components/LinesChart';
 import './index.css';
 
 const App = () => {
@@ -56,103 +55,102 @@ const App = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-100 via-blue-50 to-indigo-100 p-4">
+    <div className="min-h-screen bg-gradient-to-br from-slate-100 via-blue-50 to-indigo-100 px-[100px] py-[50px] bg-[url(./assets/map_back.svg)] bg-no-repeat bg-size-[90%] max-h-dvh">
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
         {/* Logo y filtros */}
         <div className="flex items-center space-x-6">
           <div className="flex items-center space-x-3">
             <img
-              src={logoSvg || '/placeholder.svg'}
+              src='/assets/logo.svg'
               alt="Logo"
-              className="w-10 h-10"
+              className="w-16 aspect-square"
             />
           </div>
+        </div>
 
-          {/* Filtros de infraestructura */}
-          <div className="flex items-center space-x-4">
-            <div className="w-5 h-5 text-slate-600" />
-            <span className="text-sm text-slate-700 font-medium">
-              Filtrar infraestructuras
-            </span>
-            <div className="flex space-x-2">
-              {[1, 2, 3].map(num => (
+        {/* Filtros de infraestructura */}
+        <div className="flex flex-col items-center space-x-4 gap-2">
+          <span className="text-sm text-slate-700 font-medium mx-auto">
+            Filtrar infraestructuras
+          </span>
+          <div className="flex items-center space-x-6">
+            {[1, 2, 3].map(num => {
+              const activo = filtrosActivos.includes(num);
+              return (
                 <button
                   key={num}
-                  className={`w-8 h-8 rounded-full text-sm font-bold border-2 transition-all duration-200 ${
-                    filtrosActivos.includes(num)
-                      ? 'bg-blue-500 text-white border-blue-500 shadow-lg'
-                      : 'bg-white text-slate-600 border-slate-300 hover:border-blue-400'
-                  }`}
                   onClick={() => toggleFiltro(num)}
+                  className="flex items-center space-x-2 focus:outline-none"
                 >
-                  {num}
+                  {/* Círculo exterior */}
+                  <span
+                    className={`w-4 h-4 rounded-full border-2 flex items-center justify-center transition-colors duration-200
+            ${activo ? 'border-blue-900' : 'border-blue-300'}
+          `}
+                  >
+                    {/* Círculo interior si está activo */}
+                    {activo && (
+                      <span className="w-2 h-2 bg-blue-900 rounded-full" />
+                    )}
+                  </span>
+
+                  {/* Texto al lado */}
+                  <span className="text-sm font-medium transition-colors duration-200 text-blue-900">
+                    Infra {num}
+                  </span>
                 </button>
-              ))}
-            </div>
-            <span className="text-sm text-slate-500">Infra 3</span>
+              );
+            })}
           </div>
         </div>
 
         {/* Hora y menú */}
         <div className="flex items-center space-x-4">
-          <span className="text-2xl font-bold text-slate-800">
+          <span className="text-2xl font-light text-slate-800">
             {data.horaActual}
           </span>
-          <div className="w-6 h-6 text-slate-600 cursor-pointer hover:text-slate-800" />
+          <div className="flex w-6 h-6 text-slate-600 cursor-pointer hover:text-slate-800">
+            <img
+              src='/assets/menu.svg'
+              alt="Menu"
+              className="w-5 h-auto"
+            />
+          </div>
         </div>
       </div>
 
       {/* Grid principal del dashboard */}
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 h-[calc(100vh-120px)]">
+      <div className="flex justify-between">
         {/* Radar de amenazas - Columna 1 */}
-        <div className="lg:col-span-1">
-          <RadarChart data={data.amenazasAvanzadas} />
+        <div className="flex-col">
+          <div className="lg:col-span-1">
+            <RadarChart data={data.amenazasAvanzadas} />
+          </div>
+          <div>
+            <BarsChart data={data.cyberark} />
+          </div>
         </div>
-
-        {/* Mapa central - Columna 2-3 */}
-        <div className="lg:col-span-2">
+        {/* <div>
           <Mapa
             infraestructuras={data.infraestructuras}
             filtrosActivos={filtrosActivos}
           />
-        </div>
+        </div> */}
+        <div className="flex-col">
+          {/* Panel de alerta - Columna 4 */}
+          <div>
+            <AlertBox data={data.traficoBloqueado} />
+          </div>
 
-        {/* Panel de alerta - Columna 4 */}
-        <div className="lg:col-span-1">
-          <AlertBox data={data.traficoBloqueado} />
-        </div>
-
-        {/* Gráfico de barras - Columnas 1-2 */}
-        <div className="lg:col-span-2">
-          <BarChart data={data.cyberark} />
-        </div>
-
-        {/* Gráfico de líneas - Columnas 3-4 */}
-        <div className="lg:col-span-2">
-          <LineChart data={data.ciberamenazas} />
+          {/* Gráfico de líneas - Columnas 3-4 */}
+          <div>
+            <LinesChart data={data.ciberamenazas} />
+          </div>
         </div>
       </div>
 
       {/* Leyenda inferior */}
-      <div className="mt-6 flex justify-center">
-        <div className="bg-white/90 backdrop-blur-sm rounded-lg px-6 py-3 shadow-lg">
-          <div className="flex items-center space-x-8 text-sm">
-            <div className="flex items-center space-x-2">
-              <div className="w-4 h-4 rounded-full bg-emerald-500"></div>
-              <span className="text-slate-700 font-medium">Infra 1</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <div className="w-4 h-4 rounded-full bg-blue-500"></div>
-              <span className="text-slate-700 font-medium">Infra 2</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <div className="w-4 h-4 rounded-full bg-indigo-600"></div>
-              <span className="text-slate-700 font-medium">Infra 3</span>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   );
 };

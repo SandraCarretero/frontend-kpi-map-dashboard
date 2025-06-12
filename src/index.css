@@ -1,1 +1,6 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+@import '@fontsource/outfit';
+
+* {
+  font-family: 'Outfit', sans-serif !important;
+}
