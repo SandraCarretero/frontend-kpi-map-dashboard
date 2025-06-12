@@ -2,10 +2,10 @@ import { AlertTriangle } from 'lucide-react';
 
 const AlertBox = ({ data }) => {
   return (
-    <div className="max-w-md mx-auto bg-blue-100/60 backdrop-blur-md rounded-2xl p-6 shadow-[0_0_4px_rgba(239,68,68,0.5)] relative overflow-hidden ">
+    <div className="max-w-md mx-auto bg-blue-300/20 backdrop-blur-xs rounded-2xl p-4 shadow-[0_0_4px_rgba(239,68,68,0.5)] relative overflow-hidden">
       {/* Header Alert */}
-      <div className="flex items-center gap-2 mb-4">
-        <div className="flex items-center gap-2 bg-red-400 text-white px-3 py-1 rounded-full text-sm font-medium">
+      <div className="flex items-center gap-4 mb-4">
+        <div className="flex items-center gap-2 bg-red-400 text-white px-5 py-1 rounded-full text-sm font-medium">
           <AlertTriangle size={14} />
           Nueva amenaza
         </div>

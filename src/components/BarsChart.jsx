@@ -17,7 +17,7 @@ const BarsChart = ({ data }) => {
   }));
 
   return (
-    <div className="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-3xl p-6 shadow-lg max-w-md mx-auto">
+    <div className="max-w-md mx-auto bg-blue-300/20 backdrop-blur-xs rounded-2xl p-4 border border-blue-300 relative overflow-hidden">
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
         <h3 className="text-gray-800 font-semibold text-lg">Cyberark-PSM</h3>

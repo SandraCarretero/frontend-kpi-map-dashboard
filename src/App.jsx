@@ -55,7 +55,7 @@ const App = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-100 via-blue-50 to-indigo-100 px-[100px] py-[50px] bg-[url(./assets/map_back.svg)] bg-no-repeat bg-size-[90%] max-h-dvh">
+    <div className="min-h-screen bg-gradient-to-br from-slate-100 via-blue-50 to-indigo-100 px-[150px] py-[50px] bg-[url(./assets/map_back.svg)] bg-no-repeat bg-size-[90%] max-h-dvh">
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
         {/* Logo y filtros */}
@@ -121,9 +121,9 @@ const App = () => {
       </div>
 
       {/* Grid principal del dashboard */}
-      <div className="flex justify-between">
+      <div className="flex justify-between mt-10">
         {/* Radar de amenazas - Columna 1 */}
-        <div className="flex-col">
+        <div className="flex flex-col gap-8">
           <div className="lg:col-span-1">
             <RadarChart data={data.amenazasAvanzadas} />
           </div>
@@ -137,7 +137,7 @@ const App = () => {
             filtrosActivos={filtrosActivos}
           />
         </div> */}
-        <div className="flex-col">
+        <div className="flex flex-col gap-8">
           {/* Panel de alerta - Columna 4 */}
           <div>
             <AlertBox data={data.traficoBloqueado} />
