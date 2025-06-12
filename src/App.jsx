@@ -71,7 +71,7 @@ const App = () => {
 
         {/* Filtros de infraestructura */}
         <div className="flex flex-col items-center space-x-4 gap-2">
-          <span className="text-sm text-slate-700 font-medium mx-auto">
+          <span className="text-lg text-blue-900 font-medium mx-auto">
             Filtrar infraestructuras
           </span>
           <div className="flex items-center space-x-6">
@@ -107,10 +107,10 @@ const App = () => {
 
         {/* Hora y menú */}
         <div className="flex items-center space-x-4">
-          <span className="text-2xl font-light text-slate-800">
+          <span className="text-2xl font-light text-blue-900">
             {data.horaActual}
           </span>
-          <div className="flex w-6 h-6 text-slate-600 cursor-pointer hover:text-slate-800">
+          <div className="flex w-6 h-6 text-blue-900 cursor-pointer">
             <img
               src='/assets/menu.svg'
               alt="Menu"

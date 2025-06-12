@@ -1,104 +1,135 @@
-import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer } from 'recharts';
-import { Maximize2 } from 'lucide-react';
-
 const BarsChart = ({ data }) => {
-  const cyberark = data?.cyberark || {
-    dias: ['LUN', 'MAR', 'MIÉ', 'JUE', 'VIE', 'SÁB', 'DOM'],
-    conexiones: [3, 5, 8, 12, 10, 6, 2],
-    sesiones: 133,
-    noAutorizadas: 26,
-    temporalidades: '127/143'
-  };
+  const days = data.dias;
+  const conections = data.conexiones;
 
-  // Transformar los datos para el gráfico
-  const chartData = cyberark.dias.map((dia, index) => ({
+  const chartData = days.map((dia, index) => ({
     dia: dia,
-    conexiones: cyberark.conexiones[index]
+    conexiones: conections[index]
   }));
 
   return (
     <div className="max-w-md mx-auto bg-blue-300/20 backdrop-blur-xs rounded-2xl p-4 border border-blue-300 relative overflow-hidden">
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
-        <h3 className="text-gray-800 font-semibold text-lg">Cyberark-PSM</h3>
-        <Maximize2
-          size={16}
+        <h3 className="text-blue-900 text-lg font-medium">Cyberark-PSM</h3>
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
           className="text-gray-500 cursor-pointer hover:text-gray-700"
-        />
+        >
+          <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3" />
+        </svg>
       </div>
 
       {/* Chart Container */}
       <div className="h-48 mb-6">
-        <ResponsiveContainer width="100%" height="100%">
-          <BarChart
-            data={chartData}
-            margin={{ top: 10, right: 10, left: 10, bottom: 5 }}
-            barCategoryGap="20%"
-          >
-            <XAxis
-              dataKey="dia"
-              axisLine={false}
-              tickLine={false}
-              tick={{ fontSize: 12, fill: '#6b7280' }}
-            />
-            <YAxis
-              axisLine={false}
-              tickLine={false}
-              tick={{ fontSize: 12, fill: '#6b7280' }}
-              domain={[0, 'dataMax + 2']}
-              ticks={[0, 2, 4, 6, 8, 10, 12, 14]}
-            />
-            <Bar
-              dataKey="conexiones"
-              fill="#60a5fa"
-              radius={[4, 4, 0, 0]}
-              stroke="#3b82f6"
-              strokeWidth={1}
-            />
-          </BarChart>
-        </ResponsiveContainer>
+        <svg width="100%" height="100%" viewBox="0 0 300 180">
+          {/* Grid lines */}
+          {[0, 2, 4, 6, 8, 10, 12, 14].map(value => (
+            <g key={value}>
+              <line
+                x1="40"
+                y1={160 - value * 10}
+                x2="280"
+                y2={160 - value * 10}
+                stroke="#e2e8f0"
+                strokeWidth="1"
+                opacity="0.5"
+              />
+              <text
+                x="30"
+                y={165 - value * 10}
+                textAnchor="end"
+                className="text-xs fill-blue-900"
+                dominantBaseline="middle"
+              >
+                {value}
+              </text>
+            </g>
+          ))}
+
+          {/* Bars */}
+          {chartData.map((item, index) => {
+            const barWidth = 25;
+            const barSpacing = 35;
+            const x = 50 + index * barSpacing;
+            const barHeight = item.conexiones * 10;
+            const y = 160 - barHeight;
+
+            return (
+              <g key={item.dia}>
+                <rect
+                  x={x}
+                  y={y}
+                  width={barWidth}
+                  height={barHeight}
+                  fill="#60a5fa90"
+                  strokeWidth="1"
+                  rx="4"
+                  ry="4"
+                />
+                <text
+                  x={x + barWidth / 2}
+                  y="175"
+                  textAnchor="middle"
+                  className="text-xs fill-blue-900"
+                >
+                  {item.dia}
+                </text>
+              </g>
+            );
+          })}
+        </svg>
       </div>
 
       {/* Statistics */}
-      <div className="space-y-3">
+      <div className="space-y-3 text-sm bg-sky-100/60 rounded-xl px-5 py-3 flex items-start gap-2">
         {/* Conexiones */}
         <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-2">
-            <div className="w-3 h-3 bg-blue-500 rounded-sm"></div>
-            <span className="text-gray-700 text-sm font-medium">
-              Conexiones
-            </span>
-          </div>
-          <span className="text-gray-700 text-sm font-medium">
-            Realizadas (sesiones PSM) {cyberark.sesiones}
-          </span>
+          <span className="text-blue-900 font-bold text-xs">Conexiones</span>
         </div>
 
-        {/* No Autorizadas */}
-        <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-2">
-            <div className="w-3 h-3 bg-gray-400 rounded-sm"></div>
-            <span className="text-gray-700 text-sm">No Autorizadas</span>
+        {/* No Securizadas */}
+        <div className="border-l-1 border-l-blue-900 px-2 text-xs">
+          <div className="flex gap-1">
+            <div className="flex items-center space-x-2">
+              <span className="text-blue-900">
+                Realizadas (sesiones PSM){' '}
+              </span>
+            </div>
+            <span className="text-blue-900 font-bold">
+              {data.sesiones.toString().padStart(3, '0')}
+            </span>
           </div>
-          <span className="text-gray-700 text-sm font-medium">
-            {cyberark.noAutorizadas}
-          </span>
+          <div className="flex gap-1">
+            <div className="flex items-center space-x-2">
+              <span className="text-blue-900">No Securizadas</span>
+            </div>
+            <span className="text-blue-900 font-bold">
+              {data.noAutorizadas.toString().padStart(3, '0')}
+            </span>
+          </div>
+
+          <div className="flex gap-1">
+            <div className="flex items-center space-x-2">
+              <span className="text-blue-900">Legítimas / Temporales</span>
+            </div>
+            <span className="text-blue-900 font-bold">
+              {data.temporalidades}
+            </span>
+          </div>
         </div>
 
         {/* Temporalidades */}
-        <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-2">
-            <div className="w-3 h-3 bg-green-500 rounded-sm"></div>
-            <span className="text-gray-700 text-sm">
-              Legítimas / Temporales
-            </span>
-          </div>
-          <span className="text-gray-700 text-sm font-medium">
-            {cyberark.temporalidades}
-          </span>
-        </div>
       </div>
     </div>
   );
 };
+
 export default BarsChart;
