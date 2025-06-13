@@ -37,7 +37,7 @@ const Mapa = ({ infraestructuras, filtrosActivos }) => {
   };
 
   return (
-    <div className="h-[80%] absolute overflow-hidden bg-[url(./assets/map_vectors.svg)] bg-no-repeat 2xl:bg-size-[65.6%] lg:bg-size-[60%] w-[55dvw] 2xl:left-[25.5%] 2xl:top-[19%] lg:left-[29%] lg:top-[14%]">
+    <div className="h-[80%] absolute overflow-hidden bg-[url(./assets/map_vectors.svg)] bg-no-repeat 2xl:bg-size-[65.6%] lg:bg-size-[60%] w-[55dvw] 2xl:left-[25.5%] 2xl:top-[19%] lg:left-[29%] lg:top-[24%]">
       <div className="relative h-full w-full">
         {infraestructuras
           .filter(infra => filtrosActivos.includes(infra.id))

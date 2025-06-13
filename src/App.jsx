@@ -31,9 +31,9 @@ const App = () => {
   }
 
   return (
-    <div className="min-h-screen 2xl:px-[150px] 2xl:py-[50px] px-[40px] py-[30px] max-h-dvh relative overflow-hidden">
+    <div className="lg:min-h-screen 2xl:px-[150px] 2xl:py-[50px] px-[40px] py-[30px] lg:max-h-dvh relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-slate-100 via-blue-50 to-indigo-100"></div>
-      <div className="absolute inset-0 bg-[url(./assets/map_back.svg)] bg-no-repeat 2xl:bg-size-[85%] opacity-70 2xl:bg-top-left bg-bottom-left bg-size-[85%]"></div>
+      <div className="absolute inset-0 bg-[url(./assets/map_back.svg)] bg-no-repeat opacity-70 lg:bg-size-[85%] lg:bg-left-top bg-size-[200%] bg-right-top"></div>
       <div className="relative flex items-center justify-between mb-6">
         <div className="flex items-center space-x-6">
           <div className="flex items-center space-x-3">
@@ -45,7 +45,7 @@ const App = () => {
           </div>
         </div>
 
-        <div className="flex flex-col items-center space-x-4 gap-2">
+        <div className="hidden lg:flex flex-col items-center space-x-4 gap-2">
           <span className="2xl:text-lg text-sm text-blue-900 font-medium mx-auto">
             Filtrar infraestructuras
           </span>
@@ -87,8 +87,8 @@ const App = () => {
         </div>
       </div>
 
-      <div className="flex justify-between 2xl:mt-10 items-start">
-        <div className='flex flex-col gap-10 z-10 origin-top-left 2xl:scale-100 scale-[0.62]'>
+      <div className="flex lg:flex-row flex-col justify-between 2xl:mt-10 items-start">
+        <div className="flex flex-col gap-10 z-10 origin-top-left 2xl:scale-100 lg:scale-[0.62] scale-100 mb-10 lg:mb-0">
           <div>
             <RadarChart data={data.amenazasAvanzadas} />
           </div>
@@ -96,13 +96,13 @@ const App = () => {
             <BarChart data={data.cyberark} />
           </div>
         </div>
-        <div>
+        <div className="hidden lg:block">
           <Mapa
             infraestructuras={data.infraestructuras}
             filtrosActivos={filtrosActivos}
           />
         </div>
-        <div className='flex flex-col gap-10 z-10 origin-top-right 2xl:scale-100 scale-[0.7]'>
+        <div className="flex flex-col gap-10 z-10 origin-top-right 2xl:scale-100 lg:scale-[0.7] scale-100">
           <div>
             <AlertBox data={data.traficoBloqueado} />
           </div>
@@ -112,7 +112,7 @@ const App = () => {
           </div>
         </div>
 
-        <div className="flex absolute bottom-10 right-30 z-20 gap-2">
+        <div className="absolute bottom-10 right-30 z-20 gap-2 hidden lg:flex">
           <div className="text-xs text-blue-900 font-bold mb-1">Leyenda</div>
           <div className="flex flex-col gap-1 border-l-1 border-l-blue-900 px-2">
             <div className="flex flex-col items-center gap-2 flex-wrap">
