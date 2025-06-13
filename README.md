@@ -2,7 +2,7 @@
 
 ![Map Dashboard](https://github.com/SandraCarretero/frontend-kpi-map-dashboard/blob/main/public/assets/map-dashboard.png)
 
-## Descripción 📑
+## 📑 Descripción
 
 Visualización interactiva de datos de ciberseguridad georreferenciados. Este dashboard, construido con React y TailwindCSS, permite mostrar amenazas, actividad de infraestructuras y KPIs de forma dinámica sobre un mapa.
 
@@ -15,14 +15,14 @@ Visualización interactiva de datos de ciberseguridad georreferenciados. Este da
 
 ## 🧪 Funcionalidades
 
-- ⏰ Visualización en tiempo real de la hora actual  
-- 📍 Mapa central con infraestructuras  
-- ⚠️ Radar de amenazas avanzadas  
-- 🚨 Panel de alertas y tráfico bloqueado  
-- 📊 Gráfico de barras de uso de Cyberark PSM  
-- 📈 Línea de ciberamenazas internas y externas  
-- 🧰 Filtros por tipo de infraestructura y leyenda explicativa  
-- 📱 Diseño responsivo (desktop y mobile)  
+- Visualización en tiempo real de la hora actual  
+- Mapa central con infraestructuras  
+- Radar de amenazas avanzadas  
+- Panel de alertas y tráfico bloqueado  
+- Gráfico de barras de uso de Cyberark PSM  
+- Línea de ciberamenazas internas y externas  
+- Filtros por tipo de infraestructura y leyenda explicativa  
+- Diseño responsivo (desktop y mobile)  
 
 ## 🚀 Cómo correrlo localmente
 
