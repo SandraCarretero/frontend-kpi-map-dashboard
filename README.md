@@ -28,7 +28,7 @@ Visualización interactiva de datos de ciberseguridad georreferenciados. Este da
 
 1. Clona el repositorio:
 ```bash
-git clone https://github.com/tu-usuario/frontend-kpi-map-dashboard.git
+git clone git@github.com:SandraCarretero/frontend-kpi-map-dashboard.git
 cd frontend-kpi-map-dashboard
 ```
 
