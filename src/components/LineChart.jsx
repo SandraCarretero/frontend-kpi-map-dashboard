@@ -44,7 +44,7 @@ const LineChart = ({ data }) => {
   return (
     <div className="max-w-md mx-auto bg-blue-300/20 backdrop-blur-xs rounded-2xl p-4 border border-blue-300 relative overflow-hidden">
       {/* Header */}
-      <div className="flex items-center justify-between mb-6 gap-9">
+      <div className="flex items-center justify-between mb-6 lg:gap-9 gap-4">
         <div>
           <h3 className="text-blue-900 text-lg font-medium">
             Ciberamenazas{' '}
@@ -58,7 +58,7 @@ const LineChart = ({ data }) => {
           </h3>
         </div>
         <div>
-          <p className="text-blue-900 text-xs bg-blue-50 p-1 rounded">
+          <p className="text-blue-900 text-xs bg-blue-50 p-1 rounded w-max">
             Últimos {data.meses.length} meses
           </p>
         </div>

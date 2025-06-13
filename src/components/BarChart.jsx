@@ -84,7 +84,7 @@ const BarChart = ({ data }) => {
         </svg>
       </div>
 
-      <div className="space-y-3 text-sm bg-sky-100/60 rounded-xl px-5 py-3 flex items-start gap-2">
+      <div className="space-y-3 text-sm bg-sky-100/60 rounded-xl lg:px-5 px-2 py-3 flex items-start gap-2">
         <div className="flex items-center justify-between">
           <span className="text-blue-900 font-bold text-xs">Conexiones</span>
         </div>

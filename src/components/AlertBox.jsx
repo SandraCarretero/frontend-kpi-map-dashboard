@@ -3,10 +3,10 @@ import { AlertTriangle } from 'lucide-react';
 const AlertBox = ({ data }) => {
   return (
     <div className="max-w-md mx-auto bg-blue-300/20 backdrop-blur-xs rounded-2xl p-4 shadow-[0_0_4px_rgba(239,68,68,0.5)] relative overflow-hidden">
-      <div className="flex items-center gap-4 mb-4">
-        <div className="flex items-center gap-2 bg-red-400 text-white px-5 py-1 rounded-full text-sm font-medium">
+      <div className="flex items-center lg:gap-4 gap-7 mb-4">
+        <div className="flex items-center gap-2 bg-red-400 text-white lg:px-5 px-2 py-1 rounded-full lg:text-sm text-xs font-medium">
           <AlertTriangle size={14} />
-          Nueva amenaza
+          <span className='w-max'>Nueva amenaza</span>
         </div>
         <div>
           <p className="text-blue-900 text-xs font-medium">
@@ -19,13 +19,15 @@ const AlertBox = ({ data }) => {
       <div className="absolute top-3 right-3 w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
 
       <div className="flex items-center justify-between">
-        <div className="w-1/2 bg-sky-100/60 px-5 py-3 rounded-xl" >
-          <h4 className="text-base text-blue-900 mb-1">
-            {data.mensaje}
-          </h4>
+        <div className="w-1/2 bg-sky-100/60 px-5 py-3 rounded-xl">
+          <h4 className="text-base text-blue-900 mb-1">{data.mensaje}</h4>
 
           <div className="flex items-center gap-1">
-            <img className='w-20 -ml-2' src={`/assets/${data.fuente}.png`} alt="Paloalto" />
+            <img
+              className="w-20 -ml-2"
+              src={`/assets/${data.fuente}.png`}
+              alt="Paloalto"
+            />
           </div>
         </div>
 

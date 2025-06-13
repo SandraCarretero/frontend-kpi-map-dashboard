@@ -67,7 +67,7 @@ const RadarChart = ({ data }) => {
             >
               <span
                 className={`text-sm font-medium ${
-                  key === 'SQL injection' ? 'text-red-500' : 'text-blue-900'
+                  key === 'SQL injection' ? 'text-red-400' : 'text-blue-900'
                 }`}
               >
                 {key}
@@ -133,7 +133,7 @@ const RadarChart = ({ data }) => {
                 <path
                   d={sqlData.pathData}
                   fill="transparent"
-                  stroke="#ef4444"
+                  stroke="#ff6467"
                   strokeWidth="2"
                 />
               </g>
