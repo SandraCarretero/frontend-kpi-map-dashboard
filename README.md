@@ -6,7 +6,7 @@
 
 Visualización interactiva de datos de ciberseguridad georreferenciados. Este dashboard, construido con React y TailwindCSS, permite mostrar amenazas, actividad de infraestructuras y KPIs de forma dinámica sobre un mapa.
 
-🔗 **[Ver demo online](https://frontend-kpi-map-dashboard.vercel.app/)**
+🔗 <a href="https://frontend-kpi-map-dashboard.vercel.app/" target="_blank" rel="noopener noreferrer">Ver demo online</a>
 
 ## Tecnologías utilizadas
 [![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://es.reactjs.org/)
