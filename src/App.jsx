@@ -33,7 +33,7 @@ const App = () => {
   return (
     <div className="lg:min-h-screen 2xl:px-[150px] 2xl:py-[50px] px-[40px] py-[30px] lg:max-h-dvh relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-slate-100 via-blue-50 to-indigo-100"></div>
-      <div className="absolute inset-0 bg-[url(./assets/map_back.svg)] bg-no-repeat opacity-70 lg:bg-size-[85%] lg:bg-left-top bg-size-[200%] bg-right-top"></div>
+      <div className="absolute inset-0 bg-[url(/assets/map_back.svg)] bg-no-repeat opacity-70 lg:bg-size-[85%] lg:bg-left-top bg-size-[200%] bg-right-top"></div>
       <div className="relative flex items-center justify-between mb-6">
         <div className="flex items-center space-x-6">
           <div className="flex items-center space-x-3">
