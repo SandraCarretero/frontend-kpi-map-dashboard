@@ -1,4 +1,4 @@
-# 🧭 KPI Map Dashboard - Cybersecurity
+# 🧭 KPI Map Dashboard
 
 ![Map Dashboard](https://github.com/SandraCarretero/frontend-kpi-map-dashboard/blob/main/public/assets/map-dashboard.png)
 
