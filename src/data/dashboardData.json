@@ -1,10 +1,9 @@
 {
-  "horaActual": "09:41",
   "infraestructuras": [
     {
       "id": 1,
       "nombre": "Infraestructura 1",
-      "lat": 25.10,
+      "lat": 25.1,
       "lng": -80.2,
       "estado": "alerta"
     },

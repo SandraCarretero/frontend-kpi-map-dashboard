@@ -43,7 +43,6 @@ const LineChart = ({ data }) => {
 
   return (
     <div className="max-w-md mx-auto bg-blue-300/20 backdrop-blur-xs rounded-2xl p-4 border border-blue-300 relative overflow-hidden">
-      {/* Header */}
       <div className="flex items-center justify-between mb-6 lg:gap-9 gap-4">
         <div>
           <h3 className="text-blue-900 text-lg font-medium">
@@ -64,10 +63,8 @@ const LineChart = ({ data }) => {
         </div>
       </div>
 
-      {/* Chart Container */}
       <div className="h-40 mb-4">
         <svg width="100%" height="100%" viewBox="0 0 320 160">
-          {/* Grid lines */}
           {[8, 12, 16, 20, 24].map(value => (
             <g key={value}>
               <line
@@ -91,7 +88,6 @@ const LineChart = ({ data }) => {
             </g>
           ))}
 
-          {/* Background bars */}
           {chartData.map((item, index) => {
             const barWidth = 35;
             const barSpacing = 80;
@@ -122,7 +118,6 @@ const LineChart = ({ data }) => {
             );
           })}
 
-          {/* Línea externa (azul) */}
           <path
             d={generatePath(externasPoints)}
             fill="none"
@@ -132,7 +127,6 @@ const LineChart = ({ data }) => {
             strokeLinejoin="round"
           />
 
-          {/* Puntos línea externa */}
           {externasPoints.map((point, index) => (
             <circle
               key={`externa-${index}`}
@@ -143,7 +137,6 @@ const LineChart = ({ data }) => {
             />
           ))}
 
-          {/* Línea interna (teal) */}
           <path
             d={generatePath(internasPoints)}
             fill="none"
@@ -153,7 +146,6 @@ const LineChart = ({ data }) => {
             strokeLinejoin="round"
           />
 
-          {/* Puntos línea interna */}
           {internasPoints.map((point, index) => (
             <circle
               key={`interna-${index}`}

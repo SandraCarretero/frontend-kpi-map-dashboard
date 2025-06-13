@@ -5,12 +5,29 @@ import AlertBox from './components/AlertBox';
 import BarChart from './components/BarChart';
 import LineChart from './components/LineChart';
 import './index.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const App = () => {
   const [filtrosActivos, setFiltrosActivos] = useState([1, 2, 3]);
+  const [hora, setHora] = useState(
+    new Date().toLocaleTimeString([], {
+      hour: '2-digit',
+      minute: '2-digit'
+    })
+  );
 
-  console.log(data);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setHora(
+        new Date().toLocaleTimeString([], {
+          hour: '2-digit',
+          minute: '2-digit'
+        })
+      );
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   const toggleFiltro = id => {
     setFiltrosActivos(prev =>
@@ -79,7 +96,7 @@ const App = () => {
 
         <div className="flex items-center space-x-4">
           <span className="2xl:text-2xl text-base font-light text-blue-900">
-            {data.horaActual}
+            {hora}
           </span>
           <div className="flex w-8 aspect-square bg-white/60 p-2 rounded-full cursor-pointer">
             <img src="/assets/menu.svg" alt="Menu" className="w-5 h-auto" />
