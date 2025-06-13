@@ -1,11 +1,10 @@
-const LinesChart = ({ data }) => {
+const LineChart = ({ data }) => {
   const chartData = data.meses.map((mes, index) => ({
     mes: mes,
     internas: data.internas[index],
     externas: data.externas[index]
   }));
 
-  // Función para generar puntos de la línea
   const generateLinePoints = (values, maxValue = 30) => {
     const width = 280;
     const height = 120;
@@ -21,7 +20,6 @@ const LinesChart = ({ data }) => {
   const internasPoints = generateLinePoints(data.internas);
   const externasPoints = generateLinePoints(data.externas);
 
-  // Generar path para las líneas
   const generatePath = points => {
     if (points.length < 2) return '';
 
@@ -31,7 +29,6 @@ const LinesChart = ({ data }) => {
       const prevPoint = points[i - 1];
       const currentPoint = points[i];
 
-      // Calcular puntos de control para la curva
       const controlPoint1X = prevPoint.x + (currentPoint.x - prevPoint.x) * 0.3;
       const controlPoint1Y = prevPoint.y;
       const controlPoint2X =
@@ -61,7 +58,7 @@ const LinesChart = ({ data }) => {
           </h3>
         </div>
         <div>
-          <p className="text-blue-900 text-xs">
+          <p className="text-blue-900 text-xs bg-blue-50 p-1 rounded">
             Últimos {data.meses.length} meses
           </p>
         </div>
@@ -172,4 +169,4 @@ const LinesChart = ({ data }) => {
   );
 };
 
-export default LinesChart;
+export default LineChart;

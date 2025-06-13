@@ -4,30 +4,26 @@ const RadarChart = ({ data }) => {
 
   const center = { x: 150, y: 150 };
   const maxRadius = 100;
-  const maxValue = 10; // Valor máximo para normalizar
+  const maxValue = 10;
 
-  // Función para convertir coordenadas polares a cartesianas para hexágono
   const polarToCartesian = (angle, radius) => {
     const x = center.x + radius * Math.cos(((angle - 90) * Math.PI) / 180);
     const y = center.y + radius * Math.sin(((angle - 90) * Math.PI) / 180);
     return { x, y };
   };
 
-  // Generar puntos del hexágono para la cuadrícula
   const generateHexagonPoints = radius => {
     const points = [];
     for (let i = 0; i < 6; i++) {
-      const angle = i * 60; // 60 grados entre cada punto del hexágono
+      const angle = i * 60;
       points.push(polarToCartesian(angle, radius));
     }
     return points;
   };
 
-  // Crear los niveles de la cuadrícula hexagonal
   const gridLevels = [2, 4, 6, 8, 10];
-  const angleStep = 60; // 60 grados para hexágono
+  const angleStep = 60;
 
-  // Generar puntos para cada línea de datos
   const generatePath = dataValues => {
     const points = dataValues.map((value, index) => {
       const angle = index * angleStep;
@@ -35,7 +31,6 @@ const RadarChart = ({ data }) => {
       return polarToCartesian(angle, radius);
     });
 
-    // Cerrar el path volviendo al primer punto
     const pathData =
       points
         .map(
@@ -46,7 +41,6 @@ const RadarChart = ({ data }) => {
     return { pathData, points };
   };
 
-  // Generar path para hexágono
   const generateHexagonPath = points => {
     return (
       points
@@ -59,7 +53,6 @@ const RadarChart = ({ data }) => {
 
   return (
     <div className="max-w-md mx-auto bg-blue-300/20 backdrop-blur-xs rounded-2xl p-4 pb-0 border border-blue-300 relative overflow-hidden">
-      {/* Header */}
       <div className="mb-1">
         <h3 className="text-blue-900 text-lg font-medium mb-1">
           Total amenazas avanzadas
@@ -84,10 +77,8 @@ const RadarChart = ({ data }) => {
         </div>
       </div>
 
-      {/* Hexagonal Radar Chart SVG */}
       <div className="flex justify-center">
         <svg width="300" height="260" viewBox="0 0 300 300">
-          {/* Grid hexagons */}
           {gridLevels.map(level => {
             const hexRadius = (level / maxValue) * maxRadius;
             const hexPoints = generateHexagonPoints(hexRadius);
@@ -105,7 +96,6 @@ const RadarChart = ({ data }) => {
             );
           })}
 
-          {/* Grid lines (radial) - lines from center to each vertex */}
           {horas.map((_, index) => {
             const angle = index * angleStep;
             const endPoint = polarToCartesian(angle, maxRadius);
@@ -123,7 +113,6 @@ const RadarChart = ({ data }) => {
             );
           })}
 
-          {/* XSS malware data (behind SQL injection) */}
           {(() => {
             const xssData = generatePath(valores['XSS malware']);
             return (
@@ -137,7 +126,6 @@ const RadarChart = ({ data }) => {
             );
           })()}
 
-          {/* SQL injection data (in front) */}
           {(() => {
             const sqlData = generatePath(valores['SQL injection']);
             return (
@@ -152,7 +140,6 @@ const RadarChart = ({ data }) => {
             );
           })()}
 
-          {/* Hour labels */}
           {horas.map((hora, index) => {
             const angle = index * angleStep;
             const labelPoint = polarToCartesian(angle, maxRadius + 15);

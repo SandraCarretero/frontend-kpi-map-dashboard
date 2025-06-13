@@ -1,4 +1,4 @@
-const BarsChart = ({ data }) => {
+const BarChart = ({ data }) => {
   const days = data.dias;
   const conections = data.conexiones;
 
@@ -9,7 +9,6 @@ const BarsChart = ({ data }) => {
 
   return (
     <div className="max-w-md mx-auto bg-blue-300/20 backdrop-blur-xs rounded-2xl p-4 border border-blue-300 relative overflow-hidden">
-      {/* Header */}
       <div className="flex items-center justify-between mb-6">
         <h3 className="text-blue-900 text-lg font-medium">Cyberark-PSM</h3>
         <svg
@@ -27,10 +26,8 @@ const BarsChart = ({ data }) => {
         </svg>
       </div>
 
-      {/* Chart Container */}
       <div className="h-48 mb-6">
         <svg width="100%" height="100%" viewBox="0 0 300 180">
-          {/* Grid lines */}
           {[0, 2, 4, 6, 8, 10, 12, 14].map(value => (
             <g key={value}>
               <line
@@ -54,7 +51,6 @@ const BarsChart = ({ data }) => {
             </g>
           ))}
 
-          {/* Bars */}
           {chartData.map((item, index) => {
             const barWidth = 25;
             const barSpacing = 35;
@@ -88,14 +84,11 @@ const BarsChart = ({ data }) => {
         </svg>
       </div>
 
-      {/* Statistics */}
       <div className="space-y-3 text-sm bg-sky-100/60 rounded-xl px-5 py-3 flex items-start gap-2">
-        {/* Conexiones */}
         <div className="flex items-center justify-between">
           <span className="text-blue-900 font-bold text-xs">Conexiones</span>
         </div>
 
-        {/* No Securizadas */}
         <div className="border-l-1 border-l-blue-900 px-2 text-xs">
           <div className="flex gap-1">
             <div className="flex items-center space-x-2">
@@ -126,10 +119,9 @@ const BarsChart = ({ data }) => {
           </div>
         </div>
 
-        {/* Temporalidades */}
       </div>
     </div>
   );
 };
 
-export default BarsChart;
+export default BarChart;

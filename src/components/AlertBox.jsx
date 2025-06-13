@@ -3,7 +3,6 @@ import { AlertTriangle } from 'lucide-react';
 const AlertBox = ({ data }) => {
   return (
     <div className="max-w-md mx-auto bg-blue-300/20 backdrop-blur-xs rounded-2xl p-4 shadow-[0_0_4px_rgba(239,68,68,0.5)] relative overflow-hidden">
-      {/* Header Alert */}
       <div className="flex items-center gap-4 mb-4">
         <div className="flex items-center gap-2 bg-red-400 text-white px-5 py-1 rounded-full text-sm font-medium">
           <AlertTriangle size={14} />
@@ -19,23 +18,19 @@ const AlertBox = ({ data }) => {
 
       <div className="absolute top-3 right-3 w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
 
-      {/* Main Content */}
       <div className="flex items-center justify-between">
         <div className="w-1/2 bg-sky-100/60 px-5 py-3 rounded-xl" >
           <h4 className="text-base text-blue-900 mb-1">
             {data.mensaje}
           </h4>
 
-          {/* Logo/Brand */}
           <div className="flex items-center gap-1">
             <img className='w-20 -ml-2' src={`/assets/${data.fuente}.png`} alt="Paloalto" />
           </div>
         </div>
 
-        {/* Gauge/Meter */}
         <div className="relative size-max">
           <div className="w-24 h-12 relative">
-            {/* Gauge background */}
             <div className="absolute inset-0">
               <svg
                 width="96"
@@ -43,7 +38,6 @@ const AlertBox = ({ data }) => {
                 viewBox="0 0 96 48"
                 className="transform"
               >
-                {/* Progress arc */}
                 <path
                   d="M 8 40 A 32 32 0 0 1 88 40"
                   fill="none"
@@ -53,7 +47,6 @@ const AlertBox = ({ data }) => {
                 />
               </svg>
 
-              {/* Gauge needle */}
               <div className="absolute top-6 left-1/2 transform -translate-x-1/2 origin-bottom">
                 <div
                   className="w-0.5 h-6 bg-gray-700 transform rotate-45 origin-bottom"
@@ -62,7 +55,6 @@ const AlertBox = ({ data }) => {
                 <div className="w-2 h-2 bg-gray-700 rounded-full absolute -bottom-1 left-1/2 transform -translate-x-1/2"></div>
               </div>
 
-              {/* Gauge ticks */}
               <div className="absolute inset-0">
                 {[...Array(9)].map((_, i) => (
                   <div
